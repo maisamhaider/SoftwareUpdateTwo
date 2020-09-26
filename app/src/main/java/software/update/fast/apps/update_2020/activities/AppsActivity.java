@@ -50,7 +50,8 @@ public class AppsActivity extends BaseActivity implements TrueOrFalse{
         noAppsFound_tv = findViewById(R.id.noAppsFound_tv);
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         search_et.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+                |WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
         appsList = apps.allAppPackages();
         appNo_tv.setText(appsList.size() + " Apps");
         appsAdapter = new AppsAdapter(AppsActivity.this, appsList, "");
@@ -63,7 +64,8 @@ public class AppsActivity extends BaseActivity implements TrueOrFalse{
 
         search_et.setOnEditorActionListener((v, actionId, event) -> {
 
-            if (event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENDCALL) || (actionId == EditorInfo.IME_ACTION_SEARCH)) {
+            if (event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENDCALL) ||
+                    (actionId == EditorInfo.IME_ACTION_SEARCH)) {
                 imm.hideSoftInputFromWindow(search_et.getWindowToken(), 0);
             }
             return false;

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Software Update: Fast Apps Update</string>
+    <string name="app_name">SoftwareUpdateTwo</string>
     <!-- TODO: Remove or change this placeholder text -->
 
 
@@ -17,7 +17,7 @@
 <!--    interstitial:  ca-app-pub-1256953574053973/6241027060-->
 <!--    Native:  ca-app-pub-1256953574053973/7143045193-->
 
-    <string name="app_id">app id:  ca-app-pub-1256953574053973~1601399310</string>
+    <string name="app_id">ca-app-pub-1256953574053973~1601399310</string>
     <string name="banner">ca-app-pub-1256953574053973/5328891330</string>
     <string name="interstitial">ca-app-pub-1256953574053973/6241027060</string>
 
