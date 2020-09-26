@@ -1,5 +1,35 @@
 <resources>
-    <string name="app_name">SoftwareUpdateTwo</string>
+    <string name="app_name">Software Update: Fast Apps Update</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    // ids
+
+<!--    app id:   ca-app-pub-1256953574053973~8191914317-->
+<!--    banner:   ca-app-pub-1256953574053973/5182607591-->
+<!--    interstitial:   ca-app-pub-1256953574053973/3986249454-->
+<!--    Native:   ca-app-pub-1256953574053973/8790680117-->
+
+
+    //original ids
+<!--    app id:  ca-app-pub-1256953574053973~1601399310-->
+<!--    Banner:  ca-app-pub-1256953574053973/5328891330-->
+<!--    interstitial:  ca-app-pub-1256953574053973/6241027060-->
+<!--    Native:  ca-app-pub-1256953574053973/7143045193-->
+
+    <string name="app_id">app id:  ca-app-pub-1256953574053973~1601399310</string>
+    <string name="banner">ca-app-pub-1256953574053973/5328891330</string>
+    <string name="interstitial">ca-app-pub-1256953574053973/6241027060</string>
+
+    //test ids
+<!--         <string name="banner">ca-app-pub-3940256099942544/6300978111</string>-->
+    <!--        <string name="interstitial">ca-app-pub-3940256099942544/1033173712</string>-->
+
+     <string name="p_info_about"> In this application you will able to check application updates,check android OS for update and see the usage of application. This app helps you to uninstall the application present in your phone. This app shows the RAM info. </string>
+    <string name="exit_text">Are you sure you want to\n exit?</string>
+    <string name="exit_dialog">Exit</string>
+    <string name="by_accepting">By accepting you are agree to our <u><b>Terms and\n Conditions</b></u> </string>
+    <string name="permission_texts">This application (Software Update: fast apps update) asks user to allow certain permissions that are required for the application to perform its actions properly. (Software Update: fast apps update) help user to update Applications/Android OS,provide applications usage information and uninstall the application present in your phone.We insure you that the user personal data or information is not collected by the company nor does the application host users data </string>
+    <string name="permissions_explanation">\t\nApplication Usage permission is required to access Apps information.</string>
+
 </resources>
