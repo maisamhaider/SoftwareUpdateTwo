@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SoftwareUpdateTwo</string>
+    <string name="app_name">Software Update: fast apps update</string>
     <!-- TODO: Remove or change this placeholder text -->
 
 
@@ -18,12 +18,12 @@
 <!--    Native:  ca-app-pub-1256953574053973/7143045193-->
 
     <string name="app_id">ca-app-pub-1256953574053973~1601399310</string>
-    <string name="banner">ca-app-pub-1256953574053973/5328891330</string>
-    <string name="interstitial">ca-app-pub-1256953574053973/6241027060</string>
+<!--    <string name="banner">ca-app-pub-1256953574053973/5328891330</string>-->
+<!--    <string name="interstitial">ca-app-pub-1256953574053973/6241027060</string>-->
 
     //test ids
-<!--         <string name="banner">ca-app-pub-3940256099942544/6300978111</string>-->
-    <!--        <string name="interstitial">ca-app-pub-3940256099942544/1033173712</string>-->
+         <string name="banner">ca-app-pub-3940256099942544/6300978111</string>
+            <string name="interstitial">ca-app-pub-3940256099942544/1033173712</string>
 
      <string name="p_info_about"> In this application you will able to check application updates,check android OS for update and see the usage of application. This app helps you to uninstall the application present in your phone. This app shows the RAM info. </string>
     <string name="exit_text">Are you sure you want to\n exit?</string>
