@@ -77,7 +77,7 @@ public class SAppsAdapter extends RecyclerView.Adapter<SAppsAdapter.AppHolder> {
         TextView scanningAppName_TV, scanningAppCurrentVersion_TV, newVersion_tv;
          public AppHolder(@NonNull View itemView) {
             super(itemView);
-             app_iv = itemView.findViewById(R.id.app_iv);
+             app_iv = itemView.findViewById(R.id.app_iv2);
             scanningAppName_TV = itemView.findViewById(R.id.scanningAppName_TV);
             scanningAppCurrentVersion_TV = itemView.findViewById(R.id.scanningAppCurrentVersion_TV);
              newVersion_tv = itemView.findViewById(R.id.newVersion_tv);

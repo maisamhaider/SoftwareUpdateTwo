@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
@@ -34,7 +33,7 @@ import software.update.fast.apps.update_2020.utils.AppsUtil;
 import software.update.fast.apps.update_2020.utils.MathSolver;
 import software.update.fast.apps.update_2020.utils.MyTime;
 
-public class AppInfoActivity extends AppCompatActivity {
+public class AppInfoActivity extends BaseActivity {
          PackageManager packageManager ;
 
     @Override
@@ -42,7 +41,7 @@ public class AppInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_info);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
+        showInterstitial();
         Apps apps = new Apps(AppInfoActivity.this);
         MyTime myTime = new MyTime();
         MathSolver mathSolver = new MathSolver();

@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="46dp"
-        android:src="@drawable/software_update_icon" />
+        app:srcCompat="@drawable/icon" />
 
     <TextView
         android:id="@+id/tAndC"
@@ -27,7 +27,7 @@
         android:layout_marginBottom="-40dp"
         android:gravity="center"
         android:text="Terms And Conditions"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorTextOne"
         android:textSize="20dp"
         android:textStyle="bold" />
 
@@ -51,13 +51,13 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="@string/permission_texts"
-                android:textColor="@color/colorTextGray" />
+                android:textColor="@color/colorTextTwo" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Permissions :"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorTextOne"
                 android:textStyle="bold" />
 
             <RelativeLayout
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
-                android:background="@color/colorTextGray"
+                android:background="@color/colorTextTwo"
                 android:gravity="center">
 
                 <LinearLayout
@@ -102,8 +102,6 @@
 
 
                 </LinearLayout>
-
-
             </RelativeLayout>
 
             <TextView
@@ -112,7 +110,7 @@
                 android:layout_margin="15dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/permissions_explanation"
-                android:textColor="@color/colorTextGray" />
+                android:textColor="@color/colorTextTwo" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -131,6 +129,7 @@
             android:text="Decline"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textView12"
+            app:layout_constraintHorizontal_bias="0.35"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -142,7 +141,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/termAndCondition_Cb" />
 
         <Button
             android:id="@+id/accept_btn"
@@ -151,10 +150,12 @@
             android:layout_alignParentEnd="true"
             android:layout_gravity="right"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/orange_ripple_curved_bg"
+            android:background="@drawable/green_btn_ripple_curved_bg"
             android:text="Accept"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.65"
             app:layout_constraintStart_toEndOf="@+id/textView12" />
 
         <CheckBox

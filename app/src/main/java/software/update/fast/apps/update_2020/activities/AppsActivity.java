@@ -38,6 +38,7 @@ public class AppsActivity extends BaseActivity implements TrueOrFalse{
         setContentView(R.layout.activity_apps);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setmContext(this);
+        showInterstitial();
         isSystem = getIntent().getBooleanExtra("isSystemApps", false);
 
         linearLayoutManager = new LinearLayoutManager(this);

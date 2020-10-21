@@ -25,6 +25,7 @@ public class ScanningResultActivity extends BaseActivity {
         setContentView(R.layout.activity_scanning_result);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setmContext(this);
+        showInterstitial();
         apps = new Apps(this);
         updateResult_rv = findViewById(R.id.updateResult_rv);
        TextView updateListSize_tv = findViewById(R.id.updateListSize_tv);

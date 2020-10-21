@@ -10,7 +10,7 @@ android {
         targetSdkVersion 30
         versionCode 3
         versionName "1.2"
-
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     android {
@@ -30,18 +30,19 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     //provide apps information
     implementation 'the.bot.box:appusagemonitor:1.0.1' // gives some info about apps
     //glide
-    implementation 'com.github.bumptech.glide:glide:4.10.0'
-
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    //bottom Navigation
+    implementation 'com.etebarian:meow-bottom-navigation-java:1.2.0'
     //Json for checking play store updates
     implementation 'org.jsoup:jsoup:1.13.1'
     // okHttp
@@ -50,6 +51,8 @@ dependencies {
     implementation "com.mlsdev.animatedrv:library:2.0.0"
      // progress bar dependency
     implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
+    // double progress bar dependency
+    implementation 'me.zhanghai.android.materialprogressbar:library:1.6.1'
 
     //vertical prog bar
     implementation "com.github.skydoves:progressview:1.0.9"

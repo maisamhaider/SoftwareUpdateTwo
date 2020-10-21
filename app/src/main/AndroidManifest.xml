@@ -19,11 +19,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/software_update_icon"
+        android:icon="@drawable/icon"
+        android:name=".MyApplication"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/software_update_icon"
+        android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:hardwareAccelerated="true"
         android:usesCleartextTraffic="true">
         <activity android:name="software.update.fast.apps.update_2020.activities.SplashAct">
             <intent-filter>
@@ -43,9 +45,9 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/app_id" />
-        <meta-data
-            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
-            android:value="true" />
+<!--        <meta-data-->
+<!--            android:name="com.google.android.gms.ads.AD_MANAGER_APP"-->
+<!--            android:value="true" />-->
     </application>
 
 </manifest>

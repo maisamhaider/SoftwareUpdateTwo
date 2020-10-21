@@ -23,7 +23,6 @@ import java.util.Collection;
 
 import software.update.fast.apps.update_2020.R;
 import software.update.fast.apps.update_2020.activities.AppInfoActivity;
-import software.update.fast.apps.update_2020.activities.BaseActivity;
 import software.update.fast.apps.update_2020.annotations.MyAnnotation;
 import software.update.fast.apps.update_2020.interfaces.TrueOrFalse;
 import software.update.fast.apps.update_2020.utils.Apps;
@@ -97,14 +96,11 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.appHolder> imp
                 context.startActivity(new
                         Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPkg)));
             } else {
-//                Intent intent = new Intent(context, AppInfoActivity.class);
-//                intent.putExtra("app_package", appPkg);
-//                context.startActivity(intent);
-//            }
-                if (context instanceof BaseActivity) {
-                    BaseActivity baseAct = (BaseActivity) context;
-                    baseAct.sNewActivityAds(new AppInfoActivity(), appPkg);
-                } } });
+                Intent intent = new Intent(context, AppInfoActivity.class);
+                intent.putExtra("appPackage", appPkg);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -131,7 +127,7 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.appHolder> imp
         public appHolder(@NonNull View itemView) {
             super(itemView);
             update_tv = itemView.findViewById(R.id.update_tv);
-            app_iv = itemView.findViewById(R.id.app_iv2);
+            app_iv = itemView.findViewById(R.id.app_iv);
             appName_tv = itemView.findViewById(R.id.appName_tv2);
             appVersion_tv = itemView.findViewById(R.id.appVersion_tv2);
             appSize_tv = itemView.findViewById(R.id.appSize_tv2);
@@ -160,19 +156,16 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.appHolder> imp
             }
             FilterResults filterResults = new FilterResults();
             filterResults.values = filteredList;
-                return filterResults;
+            return filterResults;
         }
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             appsList.clear();
             appsList.addAll((Collection<? extends String>) results.values);
-            if (appsList.isEmpty())
-            {
+            if (appsList.isEmpty()) {
                 setTrueOrFalse(true);
-            }
-            else
-            {
+            } else {
                 setTrueOrFalse(false);
             }
             notifyDataSetChanged();

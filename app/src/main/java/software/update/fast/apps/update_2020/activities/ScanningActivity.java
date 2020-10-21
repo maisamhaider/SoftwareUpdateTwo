@@ -14,8 +14,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.skydoves.progressview.ProgressView;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -24,6 +22,7 @@ import org.jsoup.select.Elements;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 import software.update.fast.apps.update_2020.R;
 import software.update.fast.apps.update_2020.adapters.SAppsAdapter;
 import software.update.fast.apps.update_2020.annotations.MyAnnotation;
@@ -37,15 +36,15 @@ public class ScanningActivity extends BaseActivity {
     private Context context;
     private boolean isCanceled = false;
     private ArrayList<String> updateApksList;
-    private TextView scanningApk_tv, countedApk_tv;
+    private TextView scanningApk_tv, countedApk_tv, scannedAppsPkgs_tv;
     private int appsCounter = 0;
     private int counterTwo = 0;
     private boolean isStart = false;
-  SAppsAdapter SAppsAdapter;
+    SAppsAdapter SAppsAdapter;
     String nVersion;
     RecyclerView scanningApk_RV;
     LinearLayoutManager layoutManager;
-    ProgressView scanning_pb;
+    MaterialProgressBar materialProgressBar;
     AlertDialog isStartDialog;
 
     @Override
@@ -54,8 +53,7 @@ public class ScanningActivity extends BaseActivity {
         setContentView(R.layout.activity_scanning);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         context = getApplicationContext();
-
-
+        showInterstitial();
         apps = new Apps(this);
         updateApksList = new ArrayList<>();
         appsList = apps.allAppPackages();
@@ -67,17 +65,19 @@ public class ScanningActivity extends BaseActivity {
         TextView totalApk_tv = findViewById(R.id.totalApk_tv);
         totalApk_tv.setText(totalApk_tv.getText().toString() + "    " + appsList.size());
         scanningApk_RV = findViewById(R.id.scanningApk_RV);
-        scanning_pb = findViewById(R.id.scanning_pb);
+        materialProgressBar = findViewById(R.id.materialProgressBar);
+        scannedAppsPkgs_tv = findViewById(R.id.scannedAppsPkgs_tv);
 
         layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         scanningApk_RV.setLayoutManager(layoutManager);
         SAppsAdapter = new SAppsAdapter(this);
-        scanning_pb.setMax(appsList.size());
+        materialProgressBar.setMax(appsList.size());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Please wait a moment").setCancelable(false);
         isStartDialog = builder.create();
+
         if (!isStart) {
             isStartDialog.show();
         }
@@ -131,23 +131,25 @@ public class ScanningActivity extends BaseActivity {
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
-                                   runOnUiThread(new Runnable() {
-                                       @Override
-                                       public void run() {
-                                           publishProgress(counterTwo);
-                                           updateAppsAdapter(packageName, appName, currentVersion, nVersion);
-                                           checkUpdate(nVersion, packageName, currentVersion);
-                                       }
-                                   });
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            publishProgress(counterTwo);
+                                            scanningApk_tv.setText("Scanned Apps:    " + counterTwo);
+                                            scannedAppsPkgs_tv.setText(packageName);
+                                            updateAppsAdapter(packageName, appName, currentVersion, nVersion);
+                                            checkUpdate(nVersion, packageName, currentVersion);
+                                        }
+                                    });
                                 }
                             } else {
-                                 runOnUiThread(new Runnable() {
-                                     @Override
-                                     public void run() {
-                                         mToast("No Internet Connection");
-                                         finish();
-                                     }
-                                 });
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        mToast("No Internet Connection");
+                                        finish();
+                                    }
+                                });
                             }
                         }
                     }
@@ -170,7 +172,8 @@ public class ScanningActivity extends BaseActivity {
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
-            scanning_pb.setProgress(values[0]);
+            materialProgressBar.setProgress(values[0]);
+            materialProgressBar.setSecondaryProgress(values[0] + 3);
 
         }
 
@@ -185,7 +188,7 @@ public class ScanningActivity extends BaseActivity {
     private void checkUpdate(String onlineVersion, String packageName, String currentVersion) {
         if (!isCanceled) {
             isStart = true;
-            isStartDialog.hide();
+            isStartDialog.dismiss();
 
             try {
 
@@ -205,7 +208,6 @@ public class ScanningActivity extends BaseActivity {
                     }
                 }
 
-                scanningApk_tv.setText("Scanned Apps:    " + counterTwo);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -264,8 +266,17 @@ public class ScanningActivity extends BaseActivity {
 
     public void updateAppsAdapter(String appPackage, String appName, String currentVersion, String nVersion) {
         scanningApk_RV.setAdapter(SAppsAdapter);
-        SAppsAdapter.setScanningData( appPackage, appName, currentVersion, nVersion);
-      }
+        SAppsAdapter.setScanningData(appPackage, appName, currentVersion, nVersion);
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (isStartDialog != null) {
+            if (!isStart) {
+                isStartDialog.dismiss();
+            }
+        }
 
+    }
 }

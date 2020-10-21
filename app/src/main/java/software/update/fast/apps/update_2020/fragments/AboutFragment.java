@@ -17,6 +17,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import software.update.fast.apps.update_2020.R;
+import software.update.fast.apps.update_2020.activities.BaseActivity;
 
 
 public class AboutFragment extends Fragment {
@@ -41,6 +42,7 @@ public class AboutFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_about, container, false);
 
+        ((BaseActivity)getActivity()).showInterstitial();
 
         view.findViewById(R.id.share_cl).setOnClickListener(new View.OnClickListener() {
             @Override

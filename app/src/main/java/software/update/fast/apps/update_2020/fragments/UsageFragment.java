@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -22,6 +23,7 @@ import bot.box.appusage.handler.Monitor;
 import bot.box.appusage.model.AppData;
 import bot.box.appusage.utils.Duration;
 import software.update.fast.apps.update_2020.R;
+import software.update.fast.apps.update_2020.activities.BaseActivity;
 import software.update.fast.apps.update_2020.adapters.UsageAdapter;
 
 import static bot.box.appusage.datamanager.DataManager.init;
@@ -29,14 +31,17 @@ import static bot.box.appusage.datamanager.DataManager.init;
 
 public class UsageFragment extends Fragment implements UsageContracts.View {
 
-     List<AppData> apps;
+    List<AppData> apps;
     private RecyclerView appsUsage_rv;
-    private TextView allowPermission_btn;
+    private TextView allowPermission_btn,allow_permission_tv;
     private ConstraintLayout usagePermission_cl;
     private Context context;
-    public static UsageFragment newInstance( ) {
+
+    public static UsageFragment newInstance() {
         return new UsageFragment();
     }
+
+    private ImageView usageHeader_iv;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,11 +53,14 @@ public class UsageFragment extends Fragment implements UsageContracts.View {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_usage, container, false);
+        ((BaseActivity)getActivity()).showInterstitial();
         appsUsage_rv = view.findViewById(R.id.appsUsage_rv);
+        usageHeader_iv = view.findViewById(R.id.usageHeader_iv);
+        allow_permission_tv = view.findViewById(R.id.allow_permission_tv);
         usagePermission_cl = view.findViewById(R.id.usagePermission_cl);
         allowPermission_btn = view.findViewById(R.id.allowPermission_btn);
         apps = new ArrayList<>();
-     context = getContext();
+        context = getContext();
 
         return view;
     }
@@ -60,19 +68,20 @@ public class UsageFragment extends Fragment implements UsageContracts.View {
     @Override
     public void onResume() {
         super.onResume();
-        if (Monitor.hasUsagePermission())
-        {
+        if (Monitor.hasUsagePermission()) {
             appsUsage_rv.setVisibility(View.VISIBLE);
             allowPermission_btn.setVisibility(View.GONE);
             usagePermission_cl.setVisibility(View.GONE);
+            allow_permission_tv.setVisibility(View.GONE);
+            usageHeader_iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_app_usage));
             Monitor.scan().getAppLists(this).fetchFor(Duration.TODAY);
             init();
-        }
-        else
-        {
+        } else {
             appsUsage_rv.setVisibility(View.GONE);
             allowPermission_btn.setVisibility(View.VISIBLE);
             usagePermission_cl.setVisibility(View.VISIBLE);
+            allow_permission_tv.setVisibility(View.VISIBLE);
+            usageHeader_iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_app_usage_header));
             allowPermission_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

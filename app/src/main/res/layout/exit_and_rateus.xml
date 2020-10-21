@@ -21,10 +21,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-           <ImageView
-               android:src="@drawable/software_update_icon"
-               android:layout_width="60dp"
-               android:layout_height="60dp"/>
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:srcCompat="@drawable/icon" />
         </LinearLayout>
 
         <LinearLayout
@@ -39,7 +39,7 @@
                 android:layout_gravity="center"
                  android:gravity="center"
                 android:text="Thank you for using our app."
-                 android:textColor="@color/colorTextGray"
+                 android:textColor="@color/colorTextTwo"
                 android:textSize="17sp"
                 android:textStyle="normal" />
             <TextView
@@ -50,7 +50,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/exit_text"
-                android:textColor="@color/colorTextGray"
+                android:textColor="@color/colorTextTwo"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
@@ -73,7 +73,7 @@
                  android:layout_width="74dp"
                 android:layout_height="45dp"
                 android:layout_weight="1"
-                android:background="@drawable/orange_ripple_curved_bg">
+                android:background="@drawable/green_btn_ripple_curved_bg">
 
 
 
@@ -101,7 +101,7 @@
                 android:layout_height="45dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/orange_ripple_curved_bg">
+                android:background="@drawable/green_btn_ripple_curved_bg">
 
                 <TextView
                     android:id="@+id/no_tv"
@@ -147,6 +147,8 @@
                     android:background="@android:color/transparent"
                     android:gravity="center"
                     android:text="RATE US"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
                     android:textSize="10sp"
